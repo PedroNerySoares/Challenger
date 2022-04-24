@@ -3,16 +3,27 @@ package br.com.alura.challenger.model;
 import java.time.LocalDateTime;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "transacao")
 public class Transacao {
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	private Long id;
+	
 	private String bancoOrigem;
 	private String agenciaOrigem;
 	private String ContaOrigem;
 	
-
 	private String bancoDestino;
 	private String agenciaDestino;
 	private String ContaDestino;
-	
 	
 	private Double valorTransacao;
 	private LocalDateTime dataHoraTransacao;
@@ -30,6 +41,17 @@ public class Transacao {
 		this.dataHoraTransacao = dataHoraTransacao;
 	}
 	
+	public Transacao(Transacao transacao) {
+		
+		this.bancoOrigem = transacao.getBancoOrigem();
+		this.agenciaOrigem = transacao.getAgenciaOrigem();
+		ContaOrigem = transacao.getContaOrigem();
+		this.bancoDestino = transacao.getBancoDestino();
+		this.agenciaDestino = transacao.getAgenciaDestino();
+		ContaDestino = transacao.getContaDestino();
+		this.valorTransacao =  transacao.getValorTransacao();
+		this.dataHoraTransacao = transacao.getDataHoraTransacao();
+	}
 	public String getBancoOrigem() {
 		return bancoOrigem;
 	}
