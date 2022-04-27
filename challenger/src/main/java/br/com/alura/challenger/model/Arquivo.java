@@ -1,5 +1,7 @@
 package br.com.alura.challenger.model;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,6 +21,9 @@ public class Arquivo {
 	private String nomeArquivo;
 	@Column(name = "nrtamarq")
 	private Double tamanho;
+	@Column(name = "dtimp")
+	private LocalDateTime dataImportacao;
+	
 	
 	
 
@@ -49,7 +54,13 @@ public class Arquivo {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
+	public LocalDateTime getDataImportacao() {
+		return dataImportacao;
+	}
+	public void setDataImportacao(LocalDateTime dataImportacao) {
+		this.dataImportacao = dataImportacao;
+	}
+	
 	
 
 }

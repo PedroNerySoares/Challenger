@@ -13,7 +13,7 @@ CREATE TABLE transacao (
   bancoDestino VARCHAR(45) NULL,
   agenciaDestino CHAR(4) NULL,
   ContaDestino CHAR(7) NULL,
-  valorTransacao DECIMAL(5,2) NULL,
+  valorTransacao DECIMAL(10,2) NULL,
   dataHoraTransacao DATE NULL,
   TRANSACAOcol VARCHAR(45) NULL,
   PRIMARY KEY (ID));

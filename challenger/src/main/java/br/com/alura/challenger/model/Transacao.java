@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Table(name = "transacao")
 public class Transacao {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	private String bancoOrigem;
@@ -28,6 +28,10 @@ public class Transacao {
 	private Double valorTransacao;
 	private LocalDateTime dataHoraTransacao;
 	
+	public Transacao() {
+	
+	}
+
 	public Transacao(String bancoOrigem, String agenciaOrigem, String contaOrigem, String bancoDestino,
 			String agenciaDestino, String contaDestino, Double valorTransacao,LocalDateTime dataHoraTransacao) {
 	

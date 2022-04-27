@@ -22,7 +22,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.alura.challenger.model.Arquivo;
 import br.com.alura.challenger.model.Transacao;
+import br.com.alura.challenger.repositories.ArquivoRepository;
 import br.com.alura.challenger.repositories.TransacaoRepository;
+import br.com.alura.challenger.services.ArquivoServices;
 import br.com.alura.challenger.services.TransacaoServices;
 
 
@@ -32,47 +34,39 @@ public class TransacaoController {
 	
 		@Autowired
 		private TransacaoServices transacao;
+		@Autowired
+		private ArquivoRepository arq;
 		
 		@Autowired
 		private TransacaoRepository transacaoRepository;
-	
 		@GetMapping
-		private ResponseEntity<List<Transacao>> list(@RequestBody Arquivo arquivo) {
-			List<Transacao> lista = transacao.lerArquivo(arquivo.getNomeArquivo());
-			return ResponseEntity.status(200).body(lista);
+		private ResponseEntity<List<Transacao>> listaTransacao() {
+
+			return ResponseEntity.status(200).body(transacaoRepository.findAll());
 		
 		}
-
-
-
-	@GetMapping("/{id}")
-	private ResponseEntity<Transacao> detalhar(@PathVariable Long id ){
-				Optional<Transacao>  trans = transacaoRepository.findById(id);
-				
-				if(trans.isPresent()) {
-//					return ResponseEntity.ok(new Transa(topico.get()));
-					return ResponseEntity.ok(new Transacao(trans.get()));
-					
-				}
-				
+		@GetMapping("{id}")
+		private ResponseEntity<Transacao> TransacaoDetalhe (@PathVariable Long id) {
+			Optional<Transacao> trans = transacaoRepository.findById(id);
+			if (trans.isPresent()) {
+				return ResponseEntity.ok(trans.get());
+			}
 				return ResponseEntity.notFound().build();
 		
-	}
-
-	
-
-	@PostMapping
-	private ResponseEntity<Transacao> Gravar(@RequestBody Arquivo arquivo) {
+		}
+		@PostMapping
+		private ResponseEntity<Transacao> Gravar(@RequestBody Arquivo arquivo) {
 		
 		List<Transacao> lista = transacao.lerArquivo(arquivo.getNomeArquivo());
+		System.out.println(lista.isEmpty());
 		transacaoRepository.saveAll(lista);
+		arq.save(arquivo);
 		return ResponseEntity.status(201).build();
 }
-	
-	@DeleteMapping
-	private void DeletarArquivo() {
-		transacaoRepository.deleteAll();
-	}
+		@DeleteMapping
+		private void DeletarArquivo() {
+			transacaoRepository.deleteAll();
+		}
 	
 }
 //

@@ -1,5 +1,6 @@
 package br.com.alura.challenger.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,17 +42,12 @@ public class ArquivoController {
 		
 		return ResponseEntity.notFound().build();
 	}
-	
-	
-	
 	@PostMapping
 	private void GravarAquivo(@RequestBody Arquivo arquivo) {
-		
+		arquivo.setDataImportacao(LocalDateTime.now());
 		arquivoRepository.save(arquivo);
-		System.out.println(arquivo.getNomeArquivo());
 	}
-	
-	@DeleteMapping
+		@DeleteMapping
 	private void DeletarArquivo() {
 		arquivoRepository.deleteAll();
 	}
