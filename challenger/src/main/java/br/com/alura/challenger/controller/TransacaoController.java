@@ -25,6 +25,7 @@ import br.com.alura.challenger.model.Transacao;
 import br.com.alura.challenger.repositories.ArquivoRepository;
 import br.com.alura.challenger.repositories.TransacaoRepository;
 import br.com.alura.challenger.services.ArquivoServices;
+import br.com.alura.challenger.services.EnviarEmail;
 import br.com.alura.challenger.services.TransacaoServices;
 
 
@@ -37,6 +38,9 @@ public class TransacaoController {
 		@Autowired
 		private ArquivoRepository arq;
 		
+		@Autowired
+		private EnviarEmail enviar;
+				
 		@Autowired
 		private TransacaoRepository transacaoRepository;
 		@GetMapping
@@ -58,9 +62,10 @@ public class TransacaoController {
 		private ResponseEntity<Transacao> Gravar(@RequestBody Arquivo arquivo) {
 		
 		List<Transacao> lista = transacao.lerArquivo(arquivo.getNomeArquivo());
-		System.out.println(lista.isEmpty());
 		transacaoRepository.saveAll(lista);
+		arquivo.setDataTransacao( lista.get(1).getDataHoraTransacao());; 
 		arq.save(arquivo);
+		enviar.enviar();
 		return ResponseEntity.status(201).build();
 }
 		@DeleteMapping

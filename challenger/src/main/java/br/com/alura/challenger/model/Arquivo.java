@@ -23,7 +23,8 @@ public class Arquivo {
 	private Double tamanho;
 	@Column(name = "dtimp")
 	private LocalDateTime dataImportacao;
-	
+	@Column(name = "dttrans")
+	private LocalDateTime dataTransacao;
 	
 	
 
@@ -59,6 +60,12 @@ public class Arquivo {
 	}
 	public void setDataImportacao(LocalDateTime dataImportacao) {
 		this.dataImportacao = dataImportacao;
+	}
+	public LocalDateTime getDataTransacao() {
+		return dataTransacao;
+	}
+	public void setDataTransacao(LocalDateTime dataTransacao) {
+		this.dataTransacao = dataTransacao;
 	}
 	
 	

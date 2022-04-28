@@ -17,3 +17,11 @@ CREATE TABLE transacao (
   dataHoraTransacao DATE NULL,
   TRANSACAOcol VARCHAR(45) NULL,
   PRIMARY KEY (ID));
+
+  
+  CREATE TABLE `challenger`.`usuario` (
+  `id` INT NOT NULL  AUTO_INCREMENT,
+  `usuario` VARCHAR(45) NULL,
+  `email` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`));
+  
