@@ -39,9 +39,6 @@ public class TransacaoController {
 		private ArquivoRepository arq;
 		
 		@Autowired
-		private EnviarEmail enviar;
-				
-		@Autowired
 		private TransacaoRepository transacaoRepository;
 		@GetMapping
 		private ResponseEntity<List<Transacao>> listaTransacao() {
@@ -65,7 +62,7 @@ public class TransacaoController {
 		transacaoRepository.saveAll(lista);
 		arquivo.setDataTransacao( lista.get(1).getDataHoraTransacao());; 
 		arq.save(arquivo);
-		enviar.enviar();
+		
 		return ResponseEntity.status(201).build();
 }
 		@DeleteMapping
@@ -74,11 +71,3 @@ public class TransacaoController {
 		}
 	
 }
-//
-//@PostMapping
-//public ResponseEntity<TopicoDto> cadastrar(@RequestBody  @Valid TopicoForm form,UriComponentsBuilder uriBuilder) {
-//	Topico topico = form.converter(cursoRepository);
-//	topicoRepository.saveAndFlush(topico);
-//	URI uri = uriBuilder.path("/topico/{id}").buildAndExpand(topico.getId()).toUri();
-//	return ResponseEntity.created(uri).body(new TopicoDto(topico));
-//}

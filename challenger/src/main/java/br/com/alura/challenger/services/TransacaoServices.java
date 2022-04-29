@@ -42,17 +42,7 @@ public class TransacaoServices {
 				String contaDestino= vetor[5];
 				Double valorTransacao =  Double.parseDouble(vetor[6]);
 				LocalDateTime dataTransacao = LocalDateTime.parse(vetor[7]);
-				
-				
-				
-				
-				  System.out.println("\n"); System.out.println(bancoOrigem);
-				  System.out.println(dataTransacao2);
-				  System.out.println(dataTransacao2.equals(vetor[7].substring(0, 10)));
-				  System.out.println(vetor[7].substring(0, 10));
-				  
-				  System.out.println(n+=1); System.out.println("\n");
-				 System.out.println(dataTransacao2.equals(vetor[7].substring(0, 10)));
+			
 				if(dataTransacao2.equals(vetor[7].substring(0, 10))) {
 				Transacao t1 = new Transacao(bancoOrigem, agenciaOrigem, contaOrigem, bancoDestino, agenciaDestino, contaDestino, valorTransacao, dataTransacao);
 				lista.add(t1);
