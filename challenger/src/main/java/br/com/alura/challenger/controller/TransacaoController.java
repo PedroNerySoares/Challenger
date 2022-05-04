@@ -60,7 +60,8 @@ public class TransacaoController {
 		
 		List<Transacao> lista = transacao.lerArquivo(arquivo.getNomeArquivo());
 		transacaoRepository.saveAll(lista);
-		arquivo.setDataTransacao( lista.get(1).getDataHoraTransacao());; 
+		arquivo.setDataTransacao( lista.get(1).getDataHoraTransacao());
+		arquivo.setDataImportacao(LocalDateTime.now());
 		arq.save(arquivo);
 		
 		return ResponseEntity.status(201).build();

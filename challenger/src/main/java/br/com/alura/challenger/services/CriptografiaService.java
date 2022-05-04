@@ -9,7 +9,7 @@ public class CriptografiaService {
 	private String password="";
 	private String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt(10));
 	
-	public void  ckeckPass(String password) {
+	public void  ckeckPass(String password,String hashedPassword) {
 		
 		
 		
@@ -25,4 +25,5 @@ public class CriptografiaService {
 		return BCrypt.hashpw(pass, BCrypt.gensalt(10));
 		
 	}
+
 }

@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -26,7 +28,11 @@ public class Arquivo {
 	@Column(name = "dttrans")
 	private LocalDateTime dataTransacao;
 	
-	
+	@ManyToOne
+	@JoinColumn(name="idusu")
+	private Usuario usuario;
+//	
+//	
 
 	public Arquivo() {
 		
