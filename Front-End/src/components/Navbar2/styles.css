@@ -1,0 +1,31 @@
+.Container_link{
+    display: flex;
+    height: 40px;
+    width: 600px;
+    justify-content: space-between;   
+    color: #fff;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+}
+
+.container_navbar{
+    display: flex;
+    justify-content: space-between;
+
+    height: 60px;
+    background-color: #212529;
+    padding-left: 200px;
+    padding-right: 200px;
+
+    
+}
+.container_git{
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-contact-link{
+    
+    color: #fff;
+    margin: 0px 0px 0px 10px;
+}
