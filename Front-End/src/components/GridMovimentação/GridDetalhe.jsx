@@ -27,9 +27,8 @@ export default function Movimentaco({ url }) {
             <td>{post.contaOrigem}</td>
 
             <td>{post.bancoDestino}</td>
-            <td>{post.agenciaDestino}</td>
-            <td>{post.contaDestino}</td>
             <td>R${post.valorTransacao}</td>
+            
           </tr>
         ))}
       </tbody>

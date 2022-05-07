@@ -8,16 +8,8 @@ import Routes from './Routes'
 
 function App() {
 
-  const axios = require('axios').default
-  const dados=[
-    {id:1,usuario:"kmaleo",email:"kmaleo@gmail.com"},
-    {id:2,usuario:"pedro",email:"pedro@gmail.com"},
-    {id:3,usuario:"mayara",email:"mayara@gmail.com"},
-    {id:4,usuario:"marcia",email:"marcinhadojaca@gmail.com"}
-  ]
-
   return (
-    // <Usuarios2 />
+  
      <Router >
        <Routes />
      </Router>

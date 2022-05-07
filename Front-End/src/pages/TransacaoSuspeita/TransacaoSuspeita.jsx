@@ -12,7 +12,7 @@ export default function TransacaoSuspeita() {
       <Navbar2 />
       <div className="container_GridImportacao">
         <h2>Análise de Transações Suspeitas</h2>
-        <GridDetalhe url={'/transacao'}/>
+        <GridDetalhe url={'/transacao/suspeita'}/>
         <h2>Contas Suspeitas</h2>
         <Movimentaco url={'/transacao'} />
         <h2>Agências Suspeitas</h2>

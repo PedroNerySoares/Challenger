@@ -1,6 +1,6 @@
 import { getValue } from "@testing-library/user-event/dist/utils";
 import { get } from "http";
-import React, { useEffect, useState } from "react";
+import React, { Children, useEffect, useState } from "react";
 import { Button, Form, Modal, Table } from "react-bootstrap";
 import Deletar from "../../services/DeletarUsuario";
 import { busca } from "../../services/RecuperarUsuarios";
@@ -13,7 +13,9 @@ const GridUsuarios = ({ url }) => {
   }, []);
   const [showEdit, setShowEdit] = useState(false);
   const [showExc, setShowExc] = useState(false);
+
   const [index, setIndex] = useState(0);
+  
 
   const handleCloseEdit = () => setShowEdit(false);
   const handleShowEdit = () => setShowEdit(true);
@@ -41,22 +43,23 @@ const GridUsuarios = ({ url }) => {
         <Table striped bordered hover size="sm">
           <Head />
           {post.map((post) => (
+
             <tr className="tr_usuario">
-              <td>{post.id}</td>
+              <td >{post.id}</td>
               <td>{post.usuario}</td>
               <td>{post.email}</td>
 
-              <Button onClick={handleShowEdit } variant="primary">
+              <Button onClick={handleShowEdit } variant="primary" >
                 Editar
               </Button>
-              <Button onClick={handleShowExc} variant="danger" >
+              <Button onClick={handleShowExc} variant="danger"  >
                 Deletar
               </Button>
             </tr>
           ))}
         </Table>
 
-        <Modal show={showEdit} onHide={handleCloseEdit}>
+        <Modal show={showEdit} onHide={handleCloseEdit} id={(1)} >
           <Modal.Header closeButton>
             <Modal.Title>Alteração</Modal.Title>
           </Modal.Header>
@@ -91,15 +94,18 @@ const GridUsuarios = ({ url }) => {
         <Modal show={(showExc)} onHide={handleCloseExc}  >
             
           <Modal.Header closeButton>
-            <Modal.Title>Excluir usuario</Modal.Title>
+            <Modal.Title>Excluir usuario + </Modal.Title>
           </Modal.Header>
+
           <Modal.Body>Tem Certeza que deseja Excluir? </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleCloseExc}>
               Close
+            
             </Button>
-            <Button variant="primary" >
+            <Button variant="primary"  onClick={Deletar(2)} >
               Excluir
+         
             </Button>
           </Modal.Footer>
         </Modal>

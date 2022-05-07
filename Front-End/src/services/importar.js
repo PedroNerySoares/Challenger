@@ -1,11 +1,13 @@
-export default function Importar() {
+export default function Importar(nomeArquivo,tamanho) {
  
 const axios = require('axios').default
 
+console.log()
 
-axios.post('http://localhost:8080/arquivo',{
-    nomeArquivo : 'C:/Users/pedro/Downloads/transacoes-2022-01-01.csv',
-	  tamanho:'45.5'
+
+axios.post('http://localhost:8080/transacao',{
+    nomeArquivo : "C:/Users/pedro/Downloads/"+nomeArquivo,
+	  tamanho:tamanho
 }) .then(function (response) {
     console.log(response);
     
